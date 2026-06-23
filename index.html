@@ -1,11 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alerta Quixadá — Relatar</title>
+  <link rel="stylesheet" href="style/global.css">
+  <link rel="stylesheet" href="style/form.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
-    
+
+  <header>
+    <div>
+      <strong>Alerta Quixadá</strong>
+      <span>Relatos da cidade</span>
+    </div>
+    <nav>
+      <a href="index.html" class="ativo">Relatar</a>
+      <a href="mapa.html">Ver mapa</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- título do formulario -->
+    <h1>Relatar problema urbano</h1>
+    <p>Identifique um problema na cidade de Quixadá e ajude a comunidade informando sobre ele.</p>
+
+    <!-- CARD: tipo de problema -->
+    <section>
+      <h2>Tipo de problema <span class="req">*</span></h2>
+      <div id="tipos-grid">
+        <input type="radio" name="tipo" id="t1" value="Iluminação">
+        <label for="t1">Iluminação</label>
+
+        <input type="radio" name="tipo" id="t2" value="Alagamento">
+        <label for="t2">Alagamento</label>
+
+        <input type="radio" name="tipo" id="t3" value="Buraco na via">
+        <label for="t3">Buraco na via</label>
+
+        <input type="radio" name="tipo" id="t4" value="Falta de energia">
+        <label for="t4">Falta de energia</label>
+
+        <input type="radio" name="tipo" id="t5" value="Lixo irregular">
+        <label for="t5">Lixo irregular</label>
+
+        <input type="radio" name="tipo" id="t6" value="Calçada danificada">
+        <label for="t6">Calçada danificada</label>
+
+        <input type="radio" name="tipo" id="t7" value="Esgoto">
+        <label for="t7">Esgoto</label>
+
+        <input type="radio" name="tipo" id="t8" value="Outro">
+        <label for="t8">Outro</label>
+      </div>
+      <p class="erro" id="erro-tipo">Selecione o tipo de problema.</p>
+    </section>
+
+    <!-- CARD: descrição -->
+    <section>
+      <h2>Descrição</h2>
+      <label for="descricao">Descreva o problema com detalhes</label>
+      <textarea id="descricao" placeholder="Ex: Poste apagado há 3 dias na Rua das Flores…"></textarea>
+    </section>
+
+     <!-- CARD: localização -->
+    <section>
+      <h2>Localização <span class="req">*</span></h2>
+      <p>Clique no mapa para marcar o local exato do problema.</p>
+      <div id="mapa-form"></div>
+      <p class="dica">Clique diretamente no mapa para posicionar o marcador</p>
+      <p id="coords-display"></p>
+      <p class="erro" id="erro-loc">Marque a localização no mapa.</p>
+    </section>
+
+    <!-- botão enviar -->
+    <button id="btn-enviar">Enviar relato</button>
+
+  </main>
+
+  <!-- TOAST DE CONFIRMAÇÃO -->
+  <div id="toast"></div>
+
+   <!-- Leaflet.js -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+   <!-- JS -->
+  <script src="script/config.js"></script>
+  <script src="script/storage.js"></script>
+  <script src="script/form.js"></script>
+
 </body>
 </html>

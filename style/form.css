@@ -1,0 +1,16 @@
+/* =============================
+   ALERTA QUIXADÁ — form.css
+   ============================= */
+
+#mapa-form {
+  width: 100%;
+  height: 280px;
+}
+
+.erro {
+  display: none;
+}
+
+.erro.visivel {
+  display: block;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alerta Quixadá — Mapa</title>
+  <link rel="stylesheet" href="style/global.css">
+  <link rel="stylesheet" href="style/mapa.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+  <header>
+    <div>
+      <strong>Alerta Quixadá</strong>
+      <span>Relatos da cidade</span>
+    </div>
+    <nav>
+      <a href="index.html">Relatar</a>
+      <a href="mapa.html" class="ativo">Ver mapa</a>
+    </nav>
+  </header>
+
+  <div id="barra-filtros">
+    <span>Relatos em Quixadá</span>
+    <div id="filtros">
+      <button data-filtro="todos" class="ativo">Todos</button>
+      <button data-filtro="Iluminação">Iluminação</button>
+      <button data-filtro="Alagamento">Alagamento</button>
+      <button data-filtro="Buraco na via">Buracos</button>
+      <button data-filtro="Falta de energia">Energia</button>
+      <button data-filtro="Lixo irregular">Lixo</button>
+      <button data-filtro="Calçada danificada">Calçada</button>
+      <button data-filtro="Esgoto">Esgoto</button>
+      <button data-filtro="Outro">Outro</button>
+    </div>
+    <span><strong id="n-relatos">0</strong> relato(s)</span>
+  </div>
+
+  <div id="mapa-principal"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script/config.js"></script>
+  <script src="script/storage.js"></script>
+  <script src="script/mapa.js"></script>
+
+</body>
+</html>

@@ -2,14 +2,92 @@
    ALERTA QUIXADÁ — mapa.css
    ============================= */
 
+/*Estrutura geral da pagina*/
 body {
+  margin: 0;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-#mapa-principal {
+header {
+  flex-shrink: 0;
+}
+
+/*Area principal do mapa*/
+#mapa-principal{
+  border-top: 1px solid var(--cinza-medio);
   flex: 1;
-  min-height: 0;
   width: 100%;
+  min-height:0;
+}
+
+#barra-filtros {
+  background: var(--branco);
+  border-bottom: 1px solid var(--cinza-medio);
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+
+#barra-filtros > span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto);
+  white-space: nowrap;
+}
+
+
+#filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1;
+}
+
+#filtros button {
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--cinza-medio);
+  background: var(--branco);
+  color: var(--cinza-escuro);
+  font-size: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: 0.2s;
+}
+
+#filtros button:hover {
+  background: var(--azul-medio);
+  border-color: var(--azul-medio);
+}
+
+#filtros button.ativo {
+  background: var(--verde-principal);
+  border-color: var(--verde-principal);
+  color: var(--branco);
+  font-weight: 600;
+
+}
+
+#n-relatos {
+  color: var(--azul-profundo);
+  font-weight: 700;
+}
+
+/*Responsividade básica*/
+@media(max-width:600px){
+  #barra-filtros{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #filtros{
+    width: 100%;
+  }
 }

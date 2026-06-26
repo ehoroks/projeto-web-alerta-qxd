@@ -2,15 +2,40 @@
    ALERTA QUIXADÁ — form.css
    ============================= */
 
-#mapa-form {
-  width: 100%;
-  height: 280px;
-}
-
+/* Erros */
 .erro {
   display: none;
+  color: var(--erro);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
 }
 
 .erro.visivel {
   display: block;
 }
+
+/* Botão enviar */
+#btn-enviar {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--verde-principal), var(--verde-livro));
+  color: var(--branco);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(46, 139, 87, 0.3);
+}
+
+#btn-enviar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(46, 139, 87, 0.4);
+  background: linear-gradient(135deg, var(--verde-escurido), var(--verde-principal));
+}
+
+#btn-enviar:active {
+  transform: translateY(0);
+}
+

@@ -81,3 +81,23 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(mapaPrincipal);
 
 renderizarMarcadores();
+
+
+// ── ADIÇÃO DA BARRA DE PESQUISA NO MAPA DE VISUALIZAÇÃO GLOBAL ──
+var geocoder = L.Control.geocoder({
+  defaultMarkGeocode: false,
+  placeholder: "Buscar rua ou bairro no mapa...", 
+  errorMessage: "Local não encontrado.",
+  geocoder: L.Control.Geocoder.nominatim({
+    geocodingQueryParams: {
+      viewbox: '-39.08,-5.02,-38.95,-4.91',
+      bounded: 1
+    }
+  })
+})
+.on('markgeocode', function(e) {
+  var latlng = e.geocode.center; 
+  
+  mapaPrincipal.setView(latlng, 16);
+})
+.addTo(mapaPrincipal);

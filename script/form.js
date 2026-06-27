@@ -18,8 +18,10 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19
 }).addTo(mapaForm);
 
-mapaForm.on('click', function (e) {
-  coordSelecionada = e.latlng;
+
+// ── MODIFICAÇÃO: FUNÇÃO AUXILIAR PARA ATUALIZAR O MARCADOR DO FORMULÁRIO ──
+function atualizarMarcadorForm(latlng) {
+  coordSelecionada = latlng;
 
   if (marcadorForm) {
     mapaForm.removeLayer(marcadorForm);
@@ -31,7 +33,32 @@ mapaForm.on('click', function (e) {
     'Local marcado: ' + coordSelecionada.lat.toFixed(5) + ', ' + coordSelecionada.lng.toFixed(5);
 
   document.getElementById('erro-loc').classList.remove('visivel');
+}
+
+// ── MODIFICAÇÃO: CLIQUE NO MAPA ADAPTADO ──
+mapaForm.on('click', function (e) {
+  atualizarMarcadorForm(e.latlng);
 });
+
+
+// ── MODIFICAÇÃO: IMPLEMENTAÇÃO DO MECANISMO DE BUSCA (GEOCODER) ──
+var geocoder = L.Control.geocoder({
+  defaultMarkGeocode: false, 
+  placeholder: "Buscar rua, praça ou bairro...",
+  errorMessage: "Local não encontrado.",
+  geocoder: L.Control.Geocoder.nominatim({
+    geocodingQueryParams: {
+      bounded: 1
+    }
+  })
+})
+.on('markgeocode', function(e) {
+  var latlng = e.geocode.center; 
+  
+  mapaForm.setView(latlng, 16);        
+})
+.addTo(mapaForm); 
+
 
 // ── VALIDAÇÃO ──
 function validar() {
@@ -111,4 +138,4 @@ coordSelecionada = null;
 if (marcadorForm) {
   mapaForm.removeLayer(marcadorForm);
   marcadorForm = null;
-};
+}
